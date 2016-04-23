@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="FutureArbitrage.PL.AccountConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FutureArbitrage.PL"
+             Width="250"
+             DataContext="{x:Static local:AccountConfigViewModel.Instance}">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextAlignment"
+                    Value="Right" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Margin"
+                    Value="5,5,0,5" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Grid.Column"
+                    Value="1" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Margin"
+                    Value="0,5,5,5" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="经纪商：" />
+        <TextBox Text="{Binding Account.BrokerID}" />
+        <TextBlock Grid.Row="1"
+                   Text="用户名：" />
+        <TextBox Grid.Row="1"
+                 Text="{Binding Account.InvestorID}" />
+        <TextBlock Grid.Row="2"
+                   Text="密码：" />
+        <TextBox Grid.Row="2"
+                 Text="{Binding Account.Password}" />
+        <TextBlock Grid.Row="3"
+                   Text="行情地址：" />
+        <TextBox Grid.Row="3"
+                 Text="{Binding Account.MDAddress}" />
+        <TextBlock Grid.Row="4"
+                   Text="交易地址：" />
+        <TextBox Grid.Row="4"
+                 Text="{Binding Account.TDAddress}" />
+        <UniformGrid Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     Rows="1"
+                     VerticalAlignment="Bottom">
+            <Button Content="恢复"
+                    Margin="5"
+                    Command="{Binding RestoreCommand}" />
+            <Button Content="应用"
+                    Margin="5"
+                    Command="{Binding ApplyCommand}" />
+        </UniformGrid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,34 @@
+﻿<Window x:Class="Host.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Host"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:pl="clr-namespace:Host.PL"
+        Title="Future Quantitative Trading System"
+        WindowState="Maximized"
+        DataContext="{x:Static local:MainViewModel.Instance}">
+    <Window.InputBindings>
+        <KeyBinding Key="F1"
+                    Command="{Binding SwitchToInstrumentCommand}" />
+        <KeyBinding Key="F2"
+                    Command="{Binding SwitchToQuotationCommand}" />
+        <KeyBinding Key="F3"
+                    Command="{Binding SwitchToChartCommand}" />
+    </Window.InputBindings>
+    <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
+        <TabControl>
+            <TabItem Header="Instrument"
+                     IsSelected="{Binding InstrumentIsSelected}">
+                <pl:InstrumentListView />
+            </TabItem>
+            <TabItem Header="Quotation"
+                     IsSelected="{Binding QuotationIsSelected}">
+                <pl:QuotationListView />
+            </TabItem>
+            <TabItem Header="Chart"
+                     IsSelected="{Binding ChartIsSelected}">
+                <pl:ChartsView />
+            </TabItem>
+        </TabControl>
+    </xctk:BusyIndicator>
+</Window>

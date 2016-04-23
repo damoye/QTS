@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Host.PL.CandleChartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:control="clr-namespace:Host.PL.Control"
+             BorderThickness="1"
+             BorderBrush="Black">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top"
+                   Margin="5">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Title}"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Candle Type: "
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding CandleTypes}"
+                          SelectedItem="{Binding CandleType}" />
+                <TextBlock Text="FROM: "
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center" />
+                <DatePicker SelectedDate="{Binding From}" />
+            </StackPanel>
+            <Button Content=" X "
+                    Command="{Binding CloseCommand}"
+                    HorizontalAlignment="Right" />
+        </DockPanel>
+        <control:CandlestickChart Candles="{Binding Candles}"
+                                  Precision="{Binding Precision}" />
+    </DockPanel>
+</UserControl>

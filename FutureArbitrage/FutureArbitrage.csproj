@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3A906DF-0DCB-4840-B22B-4381BCEBB429}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FutureArbitrage</RootNamespace>
+    <AssemblyName>FutureArbitrage</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BLL\AccountCenter.cs" />
+    <Compile Include="BLL\InstrumentCenter.cs" />
+    <Compile Include="BLL\LogCenter.cs" />
+    <Compile Include="Util\SpeechHelper.cs" />
+    <Compile Include="Contract\Account.cs" />
+    <Compile Include="Contract\DirectionType.cs" />
+    <Compile Include="Contract\HedgeFlag.cs" />
+    <Compile Include="Contract\Instrument.cs" />
+    <Compile Include="Converter\DirectionToSymbolConverter.cs" />
+    <Compile Include="PL\InstrumentModel.cs" />
+    <Compile Include="Contract\InvestorPositionDetail.cs" />
+    <Compile Include="Contract\Log.cs" />
+    <Compile Include="Contract\InputOrder.cs" />
+    <Compile Include="Contract\Order.cs" />
+    <Compile Include="Contract\OrderStatus.cs" />
+    <Compile Include="Contract\OrderSubmitStatus.cs" />
+    <Compile Include="Contract\InvestorPosition.cs" />
+    <Compile Include="Contract\PosiDirection.cs" />
+    <Compile Include="Contract\PositionDateType.cs" />
+    <Compile Include="Contract\Quotation.cs" />
+    <Compile Include="Contract\Trade.cs" />
+    <Compile Include="Contract\TradeType.cs" />
+    <Compile Include="Contract\TradingAccount.cs" />
+    <Compile Include="Converter\BoolReverseConverter.cs" />
+    <Compile Include="Converter\BoolToBrushConverter.cs" />
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\DirectionConverter.cs" />
+    <Compile Include="Converter\OffsetFlagConverter.cs" />
+    <Compile Include="Converter\StartStopConverter.cs" />
+    <Compile Include="CTP\TraderAdapter.cs" />
+    <Compile Include="Frame\Command.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="PL\AccountConfigView.xaml.cs">
+      <DependentUpon>AccountConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AccountConfigViewModel.cs" />
+    <Compile Include="PL\ArbitrageConfig.cs" />
+    <Compile Include="PL\ArbitrageView.xaml.cs">
+      <DependentUpon>ArbitrageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\ArbitrageViewModel.cs" />
+    <Compile Include="Contract\ArbiDirection.cs" />
+    <Compile Include="PL\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\LogViewModel.cs" />
+    <Compile Include="PL\OrderRecordView.xaml.cs">
+      <DependentUpon>OrderRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\OrderRecordViewModel.cs" />
+    <Compile Include="PL\PositionView.xaml.cs">
+      <DependentUpon>PositionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PositionViewModel.cs" />
+    <Compile Include="PL\TradeRecordView.xaml.cs">
+      <DependentUpon>TradeRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\TradeRecordViewModel.cs" />
+    <Compile Include="PL\TradingAccountView.xaml.cs">
+      <DependentUpon>TradingAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PL\TradingAccountViewModel.cs" />
+    <Compile Include="Util\ConfigHelper.cs" />
+    <Compile Include="Util\CTPErrorHelper.cs" />
+    <Compile Include="Util\DateTimeHelper.cs" />
+    <Compile Include="Util\EnumHelper.cs" />
+    <Compile Include="Util\JSONHelper.cs" />
+    <Compile Include="Contract\OffsetFlag.cs" />
+    <Compile Include="Util\QueueThreadSafe.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contract\RelativeSymbol.cs" />
+    <Compile Include="Converter\ArbiDirectionConverter.cs" />
+    <Compile Include="Converter\RelativeSymbolConverter.cs" />
+    <Compile Include="CTP\MdAdapter.cs" />
+    <Compile Include="Frame\BindableBase.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PL\AccountConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PL\ArbitrageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PL\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PL\OrderRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PL\PositionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PL\TradeRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PL\TradingAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="thostmduserapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="thosttraderapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CTP\CTP.vcxproj">
+      <Project>{9ea5a65f-821f-4a97-b73b-c15e1f2e50fc}</Project>
+      <Name>CTP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

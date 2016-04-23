@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Host.PL.QuotationListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Host.PL"
+             DataContext="{x:Static local:QuotationListViewModel.Instance}">
+    <DataGrid x:Name="QuotationList"
+              ItemsSource="{Binding Quotations}"
+              SelectedItem="{Binding SelectedQuotation}"
+              IsReadOnly="True"
+              IsTextSearchEnabled="True">
+        <DataGrid.InputBindings>
+            <MouseBinding MouseAction="LeftDoubleClick"
+                          Command="{Binding OpenCandleCommand}"
+                          CommandParameter="{Binding ElementName=QuotationList, Path=SelectedItem}" />
+            <KeyBinding Gesture="Enter"
+                        Command="{Binding OpenCandleCommand}"
+                        CommandParameter="{Binding ElementName=QuotationList, Path=SelectedItem}" />
+            <KeyBinding Key="Delete"
+                        Command="{Binding RemoveCommand}"
+                        CommandParameter="{Binding ElementName=QuotationList, Path=SelectedItem}" />
+        </DataGrid.InputBindings>
+    </DataGrid>
+</UserControl>

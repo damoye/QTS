@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Host.PL.Control.CandlestickChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Host.PL.Control"
+             SizeChanged="OnSizeChanged"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="0,0,1,1"
+                BorderBrush="Black">
+            <Grid MouseWheel="ChartMouseWheel"
+                  MouseEnter="OnMouseEnter"
+                  MouseLeave="OnMouseLeave"
+                  MouseMove="OnMouseMove"
+                  Background="Transparent"
+                  x:Name="MainGrid">
+                <local:DrawElement x:Name="DrawElement" />
+                <Line x:Name="XLine"
+                      X2="{Binding X1,RelativeSource={RelativeSource Mode=Self}}"
+                      Y2="{Binding ActualHeight,RelativeSource={RelativeSource Mode=Self}}"
+                      Stroke="Black" />
+                <Line x:Name="YLine"
+                      Y2="{Binding Y1,RelativeSource={RelativeSource Mode=Self}}"
+                      X2="{Binding ActualWidth,RelativeSource={RelativeSource Mode=Self}}"
+                      Stroke="Black" />
+                <TextBlock x:Name="InfoBlock"
+                           Margin="5" />
+            </Grid>
+        </Border>
+        <Canvas Grid.Row="1"
+                Height="20">
+            <TextBlock x:Name="XCursor" />
+        </Canvas>
+        <Canvas Grid.Column="1"
+                Width="50">
+            <TextBlock x:Name="YCursor" />
+        </Canvas>
+        <ScrollBar Grid.Row="1"
+                   x:Name="ScrollBar"
+                   Orientation="Horizontal"
+                   ValueChanged="GenerateAndDraw"
+                   Opacity="0.5"
+                   Background="Transparent" />
+    </Grid>
+</UserControl>

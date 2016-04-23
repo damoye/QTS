@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="FutureArbitrage.PL.LogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FutureArbitrage.PL"
+             DataContext="{x:Static local:LogViewModel.Instance}">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom"
+                Content="清空"
+                Command="{Binding ClearCommand}" />
+        <ListBox ItemsSource="{Binding Logs}" />
+    </DockPanel>
+</UserControl>

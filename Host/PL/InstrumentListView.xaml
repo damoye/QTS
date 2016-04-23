@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Host.PL.InstrumentListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Host.PL"
+             DataContext="{x:Static local:InstrumentListViewModel.Instance}">
+    <DataGrid ItemsSource="{Binding Instruments}"
+              IsReadOnly="True"
+              x:Name="InstrumentList"
+              IsTextSearchEnabled="True"
+              TextSearch.TextPath="InstrumentID">
+        <DataGrid.InputBindings>
+            <MouseBinding MouseAction="LeftDoubleClick"
+                          Command="{Binding ChooseQuotationCommand}"
+                          CommandParameter="{Binding ElementName=InstrumentList, Path=SelectedItem}" />
+            <KeyBinding Gesture="Enter"
+                        Command="{Binding ChooseQuotationCommand}"
+                        CommandParameter="{Binding ElementName=InstrumentList, Path=SelectedItem}" />
+        </DataGrid.InputBindings>
+    </DataGrid>
+</UserControl>
